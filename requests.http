@@ -1,0 +1,13 @@
+POST http://localhost:8080/api/sms
+Content-Type: application/json
+
+{
+    "to": "+521111111111",
+    "from": "+122344566778",
+    "body": "Hello from Twilio!"
+}
+
+###
+
+GET http://localhost:8080/api/sms?status=FAILED
+Content-Type: application/json
