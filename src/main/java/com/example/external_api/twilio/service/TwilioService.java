@@ -19,10 +19,10 @@ import java.util.List;
 public class TwilioService {
     private static final Logger logger = LoggerFactory.getLogger(TwilioService.class);
 
-    @Value("${twilio.account.sid}")
+    @Value("${TWILIO.ACCOUNT.SID}")
     private String accountSid;
 
-    @Value("${twilio.auth.token}")
+    @Value("${TWILIO.AUTH.TOKEN}")
     private String authToken;
 
     private final TwilioSMSRepository smsRepository;

@@ -1,0 +1,27 @@
+services:
+  twilio-demo-service:
+    container_name: twilio-demo-${ENV_NAME}
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_CONTAINER_NAME}:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+
+      TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID}
+      TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN}
+    ports:
+      - "${TWILIO_SERVICE_PORT}:8080"
+    networks:
+      - twilio-demo
+    image: twilio-demo/twilio-demo-service:${IMAGE_TAG}
+
+networks:
+  twilio-demo:
+    driver: bridge
+
+volumes:
+  db_dev:
+  db_test:
+  db_staging:    
